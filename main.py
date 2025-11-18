@@ -1,4 +1,6 @@
+#this doesnt work rn
 import turtle as trtl
+from functools import partial
 
 def check_win(turtles):
   winning = [
@@ -26,6 +28,10 @@ def check_win(turtles):
 
   return False
 
+def turtle_clicked(turtle, letter):
+  style = ('Arial', 30, 'bold')
+  turtle.showturtle()
+  turtle.write(letter, font=style, align="center")
 
 turtles = []
 
@@ -82,6 +88,10 @@ x=0
 for turtle in turtles:
   turtle.goto(positions[x])
   x += 1
+
+while check_win(turtles) != True:
+  for t in turtles:
+    t.onclick(partial(turtle_clicked, t, "O"))
   
 wn = trtl.Screen()
 wn.mainloop()
