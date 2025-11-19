@@ -106,7 +106,10 @@ def handle_click(x, y, index):
         show_winner(winner)
         game_over = True
         return
-
+    if "" not in board:
+        tie_game()
+        game_over = True
+        return
     turn = "O" if turn == "X" else "X"
 
 def show_winner(winner):
@@ -116,6 +119,17 @@ def show_winner(winner):
     msg.goto(0, 120)
     msg.color("green")
     msg.write(f"{winner} wins!", align="center", font=("Arial", 32, "bold"))
+    
+def tie_game():
+    msg = trtl.Turtle()
+    msg.hideturtle()
+    msg.penup()
+    msg.goto(0, 120)
+    msg.color("red")
+    msg.write(f"Tie Game!", align="center", font=("Arial", 32, "bold"))
+    
+
+    
 
 for i, t in enumerate(turtles):
     t.onclick(lambda x, y, i=i: handle_click(x, y, i))
