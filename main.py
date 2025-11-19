@@ -106,12 +106,10 @@ def show_winner(winner):
     msg.hideturtle()
     msg.penup()
     msg.goto(0, 120)
+    msg.color("green")
     msg.write(f"{winner} wins!", align="center", font=("Arial", 32, "bold"))
 
 for i, t in enumerate(turtles):
     t.onclick(lambda x, y, i=i: handle_click(x, y, i))
 
 wn.mainloop()
-
-
-
