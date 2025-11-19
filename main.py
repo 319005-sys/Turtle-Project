@@ -1,4 +1,5 @@
 import turtle as trtl
+import random 
 
 ROWS = 3
 COLS = 3
@@ -78,17 +79,24 @@ for i, t in enumerate(turtles):
 turn = "X"
 game_over = False
 wn = trtl.Screen()
+color = True
 
 def handle_click(x, y, index):
-    global turn, game_over
-
+    global turn, game_over, color
+    
     if game_over:
         return
     if board[index] != "":
         return
 
     t = turtles[index]
-    t.fillcolor("pink")
+    if color == True:
+      t.color("blue")
+      color = False
+    else:
+      t.color("purple")
+      color = True
+    
     t.turtlesize(0.01)
     t.write(turn, font=("Arial", 30, "bold"), align="center")
     board[index] = turn
